@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Início - Sistema Seguro</title>
+</head>
+<body>
+    <h2>Página Inicial</h2>
+    <p>Bem-vindo(a), <b th:text="${username}">Usuário</b>!</p>
+    <p>Seu perfil de acesso: <span th:text="${authorities}">[ROLE]</span></p>
+
+    <br>
+    <form th:action="@{/logout}" method="post">
+        <button type="submit">Sair (Logout)</button>
+    </form>
+</body>
+</html>
