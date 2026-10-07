@@ -11,6 +11,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+/**
+ * Entidade de domínio que representa o Usuário no MongoDB Atlas.
+ */
 @Getter
 @Setter
 @NoArgsConstructor

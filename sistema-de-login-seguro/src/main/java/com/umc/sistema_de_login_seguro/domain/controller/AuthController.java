@@ -9,10 +9,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.umc.sistema_de_login_seguro.domain.model.User;
 import com.umc.sistema_de_login_seguro.domain.service.UserService;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 
 @Controller
 @RequiredArgsConstructor
+@Tag(name = "Comandos do Usuario", description = "Operações do Usuario")
 public class AuthController {
 
     private final UserService userService;

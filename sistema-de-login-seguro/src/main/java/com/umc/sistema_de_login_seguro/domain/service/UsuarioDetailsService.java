@@ -13,6 +13,9 @@ import com.umc.sistema_de_login_seguro.domain.repository.UserRepository;
 
 import lombok.RequiredArgsConstructor;
 
+/**
+ * Serviço que conecta a autenticação do Spring Security ao banco de dados MongoDB.
+ */
 @Service 
 @RequiredArgsConstructor
 public class UsuarioDetailsService implements UserDetailsService {
@@ -20,12 +23,11 @@ public class UsuarioDetailsService implements UserDetailsService {
     private final UserRepository userRepository;
     
     @Override
-    public UserDetails loadUserByUsername(String emailOrUsername) throws UsernameNotFoundException {
-        User usuario = userRepository.findByEmail(emailOrUsername)
-                .orElseGet(() -> userRepository.findByEmail(emailOrUsername)
-                        .orElseThrow(() -> new UsernameNotFoundException("Usuário não encontrado: " + emailOrUsername)));
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        User usuario = userRepository.findByEmail(email)
+                .orElseThrow(() -> new UsernameNotFoundException("Usuário não encontrado: " + email));
 
-        String roleName = usuario.getRole() != null ? usuario.getRole().name() : "ROLE_USER";
+        String roleName = usuario.getRole() != null ? usuario.getRole().name() : "CLIENT";
 
         return new org.springframework.security.core.userdetails.User(
                 usuario.getEmail(),
